@@ -15,7 +15,7 @@ public class TestSpell : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

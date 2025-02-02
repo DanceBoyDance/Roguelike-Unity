@@ -1,25 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyReceiveDamage : MonoBehaviour
 {
     public float health;
     public float maxHealth;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject healthBar;
+    public Slider healthBarSlider;
     void Start()
     {
         health = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DealDamage(float damage)
     {
+        healthBar.SetActive(true);
         health -= damage;
         CheckDeath();
+        healthBarSlider.value = CalculateHealthPercentage();
+    }
+    public void HealCharacter(float heal)
+    {
+        health += heal;
+        CheckOverheal();
+        healthBarSlider.value = CalculateHealthPercentage();
     }
 
     void CheckOverheal()
@@ -36,5 +40,10 @@ public class EnemyReceiveDamage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    float CalculateHealthPercentage()
+    {
+        return health / maxHealth;
     }
 }

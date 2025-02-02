@@ -8,10 +8,9 @@ public class TestEnemyProjectile : MonoBehaviour
     {
         if (collision.tag != "Enemy")
         {
-            // if (collision.GetComponent<EnemyReceiveDamage>() != null)
-            // {
-            //     collision.GetComponent<EnemyReceiveDamage>().DealDamage(damage);
-            // }
+            if (collision.tag == "Player") {
+                PlayerStats.playerStats.DealDamage(damage);
+            }
             Destroy(gameObject);
         }
     }
