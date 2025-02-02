@@ -19,12 +19,6 @@ public class EnemyReceiveDamage : MonoBehaviour
         CheckDeath();
         healthBarSlider.value = CalculateHealthPercentage();
     }
-    public void HealCharacter(float heal)
-    {
-        health += heal;
-        CheckOverheal();
-        healthBarSlider.value = CalculateHealthPercentage();
-    }
 
     void CheckOverheal()
     {

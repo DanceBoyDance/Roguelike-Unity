@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class TestEnemyShooting : MonoBehaviour
 {
     public GameObject projectile;
-    public Transform player;
+    private GameObject player;
     public float minDamage;
     public float maxDamage;
     public float projectileForce;
@@ -15,15 +15,17 @@ public class TestEnemyShooting : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShootPlayer());
+        player = FindFirstObjectByType<PlayerMovement>().gameObject;
     }
 
 
     IEnumerator ShootPlayer()
     {
-        if (player != null) {
-            yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(cooldown);
+        if (player != null)
+        {
             GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
-            Vector2 direction = (player.position - transform.position).normalized; 
+            Vector2 direction = (player.transform.position - transform.position).normalized;
             spell.GetComponent<Rigidbody2D>().linearVelocity = direction * projectileForce;
             spell.GetComponent<TestEnemyProjectile>().damage = Random.Range(minDamage, maxDamage);
             StartCoroutine(ShootPlayer());
