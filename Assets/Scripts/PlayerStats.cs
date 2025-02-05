@@ -12,8 +12,10 @@ public class PlayerStats : MonoBehaviour
     public Slider healthBarSlider;
     public float health;
     public float maxHealth;
-    public int gold;
+    public int coins;
     public int gems;
+    public TextMeshProUGUI coinsValue;
+    public TextMeshProUGUI gemsValue;
 
     void Awake()
     {
@@ -31,6 +33,8 @@ public class PlayerStats : MonoBehaviour
     {
         health = maxHealth;
         UpdateHealthUI();
+        coinsValue.text = "Gold: " + coins.ToString();
+        gemsValue.text = "Gems: " + gems.ToString();
     }
 
     public void DealDamage(float damage)
@@ -73,5 +77,18 @@ public class PlayerStats : MonoBehaviour
     {
         healthBarSlider.value = CalculateHealthPercentage();
         healthText.text = Mathf.Ceil(health).ToString() + "/" + Mathf.Ceil(maxHealth).ToString();
+    }
+
+    public void AddCurrency(CurrencyPickup currency) {
+        if (currency.currentPickup == CurrencyPickup.pickupObjects.COIN)
+        {
+            coins += currency.pickupQuantity;
+            coinsValue.text = "Gold: " + coins.ToString();
+        }
+        else if (currency.currentPickup == CurrencyPickup.pickupObjects.GEM)
+        {
+            gems += currency.pickupQuantity;
+            gemsValue.text = "Gems: " + gems.ToString();
+        }
     }
 }

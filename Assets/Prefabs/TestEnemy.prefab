@@ -176,6 +176,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 8994123706599443749}
   healthBarSlider: {fileID: 1363909501451406762}
+  lootDrop: {fileID: 3683576310279801797, guid: 5b9ea0c2460714a43acf63229c1cf987, type: 3}
 --- !u!114 &-5089631997815257402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 8848665481741207581, guid: 2c5cd2a3345504177a920b4628df2aef, type: 3}
-  player: {fileID: 0}
   minDamage: 5
   maxDamage: 10
   projectileForce: 2

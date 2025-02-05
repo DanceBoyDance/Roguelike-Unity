@@ -4,7 +4,7 @@ public class TestProjectile : MonoBehaviour
 {
     public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Start() 
     {
 
     }
@@ -19,9 +19,9 @@ public class TestProjectile : MonoBehaviour
     {
         if (collision.name != "Player")
         {
-            if (collision.GetComponent<EnemyReceiveDamage>() != null)
+            if (collision.GetComponent<Enemy>() != null)
             {
-                collision.GetComponent<EnemyReceiveDamage>().DealDamage(damage);
+                collision.GetComponent<Enemy>().DealDamage(damage);
             }
             Destroy(gameObject);
         }

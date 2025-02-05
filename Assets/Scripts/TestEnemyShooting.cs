@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class TestEnemyShooting : MonoBehaviour
+public class TestEnemyShooting : EnemyAttack
 {
     public GameObject projectile;
-    private GameObject player;
     public float minDamage;
     public float maxDamage;
     public float projectileForce;
     public float cooldown;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(ShootPlayer());
-        player = FindFirstObjectByType<PlayerMovement>().gameObject;
     }
 
 
